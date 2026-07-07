@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Carlton Aesthetics — Pharmacist-led facial aesthetics</title>
+<meta name="description" content="Anti-wrinkle treatments and dermal fillers, delivered by a GPhC-registered pharmacist within an established community pharmacy. Book your consultation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --porcelain:#F4EEE3;   /* logo background */
+    --bone:#FAF6EE;        /* lighter panel */
+    --ink:#26241F;         /* logo charcoal */
+    --ink-soft:#5A564C;
+    --bronze:#9A7E4F;      /* single accent, used sparingly */
+    --hairline:#26241F;
+    --max:1120px;
+    --serif:'Cormorant Garamond', Georgia, serif;
+    --sans:'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    font-weight:300;
+    color:var(--ink);
+    background:var(--porcelain);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit}
+
+  /* ---------- Wordmark (recreated from logo) ---------- */
+  .wordmark{ text-align:center; text-decoration:none; display:inline-block; }
+  .wordmark .name{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:.32em;
+    text-transform:uppercase;
+    display:block;
+  }
+  .wordmark .sub{
+    display:flex; align-items:center; gap:.9em;
+    font-family:var(--sans); font-weight:400;
+    letter-spacing:.52em; text-transform:uppercase;
+    justify-content:center;
+    margin-top:.25em;
+  }
+  .wordmark .sub::before,.wordmark .sub::after{
+    content:""; height:1px; background:var(--ink); flex:1; min-width:2em;
+  }
+
+  /* Flanked label — the — AESTHETICS — device from the logo,
+     reused as the section-label system across the whole site */
+  .flank{
+    display:flex; align-items:center; gap:1.1em;
+    font-size:.72rem; letter-spacing:.5em; text-transform:uppercase;
+    font-weight:400; color:var(--ink-soft);
+    justify-content:center; margin-bottom:1.6rem;
+  }
+  .flank::before,.flank::after{content:"";height:1px;background:var(--bronze);width:3.2em;flex:none}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(244,238,227,.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid rgba(38,36,31,.12);
+  }
+  .nav{
+    max-width:var(--max); margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:.9rem 1.4rem;
+  }
+  .nav .wordmark .name{font-size:1.15rem}
+  .nav .wordmark .sub{font-size:.42rem; letter-spacing:.5em; gap:.6em}
+  .nav .wordmark .sub::before,.nav .wordmark .sub::after{min-width:1.4em}
+  .nav-links{display:flex; gap:2rem; list-style:none; font-size:.8rem; letter-spacing:.18em; text-transform:uppercase; font-weight:400}
+  .nav-links a{text-decoration:none; padding:.3rem 0; border-bottom:1px solid transparent; transition:border-color .25s}
+  .nav-links a:hover,.nav-links a:focus-visible{border-color:var(--bronze)}
+  .nav-cta{
+    font-size:.78rem; letter-spacing:.2em; text-transform:uppercase; font-weight:400;
+    text-decoration:none; border:1px solid var(--ink); padding:.65rem 1.3rem;
+    transition:background .25s,color .25s; white-space:nowrap;
+  }
+  .nav-cta:hover,.nav-cta:focus-visible{background:var(--ink); color:var(--porcelain)}
+  .menu-btn{display:none; background:none; border:none; font-family:var(--sans); font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; cursor:pointer; color:var(--ink); padding:.5rem}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    max-width:var(--max); margin:0 auto;
+    padding:clamp(4rem,10vh,7.5rem) 1.4rem clamp(3.5rem,8vh,6rem);
+    text-align:center;
+  }
+  .hero h1{
+    font-family:var(--serif); font-weight:400;
+    font-size:clamp(2.4rem,6vw,4.4rem);
+    line-height:1.12; letter-spacing:.01em;
+    max-width:18ch; margin:0 auto;
+  }
+  .hero h1 em{font-style:italic; font-weight:400}
+  .hero p.lead{
+    max-width:52ch; margin:1.6rem auto 0;
+    color:var(--ink-soft); font-size:1.02rem;
+  }
+  .hero-ctas{margin-top:2.6rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap}
+  .btn{
+    font-family:var(--sans); font-size:.8rem; letter-spacing:.22em; text-transform:uppercase; font-weight:400;
+    text-decoration:none; padding:1rem 2.1rem; border:1px solid var(--ink);
+    transition:background .25s,color .25s; display:inline-block;
+  }
+  .btn.solid{background:var(--ink); color:var(--porcelain)}
+  .btn.solid:hover,.btn.solid:focus-visible{background:transparent; color:var(--ink)}
+  .btn.ghost:hover,.btn.ghost:focus-visible{background:var(--ink); color:var(--porcelain)}
+  .hero-note{margin-top:1.4rem; font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft)}
+  .hero-note span{color:var(--bronze)}
+
+  /* ---------- Credential strip ---------- */
+  .credentials{border-top:1px solid rgba(38,36,31,.15); border-bottom:1px solid rgba(38,36,31,.15); background:var(--bone)}
+  .credentials ul{
+    max-width:var(--max); margin:0 auto; list-style:none;
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  .credentials li{
+    padding:1.6rem 1.2rem; text-align:center;
+    font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; font-weight:400;
+    color:var(--ink-soft); line-height:1.9;
+  }
+  .credentials li + li{border-left:1px solid rgba(38,36,31,.12)}
+  .credentials strong{display:block; font-family:var(--serif); font-size:1.25rem; font-weight:500; letter-spacing:.06em; color:var(--ink); text-transform:none}
+
+  /* ---------- Sections ---------- */
+  section{padding:clamp(4rem,9vh,7rem) 1.4rem}
+  .inner{max-width:var(--max); margin:0 auto}
+  .section-title{
+    font-family:var(--serif); font-weight:400; text-align:center;
+    font-size:clamp(1.9rem,4vw,2.8rem); line-height:1.2;
+    max-width:24ch; margin:0 auto;
+  }
+  .section-intro{max-width:56ch; margin:1.2rem auto 0; text-align:center; color:var(--ink-soft)}
+
+  /* Treatments */
+  .treatments{background:var(--porcelain)}
+  .treat-grid{
+    margin-top:3.5rem; display:grid; grid-template-columns:repeat(3,1fr); gap:0;
+    border:1px solid rgba(38,36,31,.18);
+  }
+  .treat{
+    padding:2.6rem 2.2rem; background:var(--bone);
+    display:flex; flex-direction:column; gap:1rem;
+    transition:background .3s;
+  }
+  .treat + .treat{border-left:1px solid rgba(38,36,31,.18)}
+  .treat:hover{background:#F6F1E6}
+  .treat .kicker{font-size:.68rem; letter-spacing:.42em; text-transform:uppercase; color:var(--bronze); font-weight:400}
+  .treat h3{font-family:var(--serif); font-weight:500; font-size:1.6rem; letter-spacing:.02em}
+  .treat p{color:var(--ink-soft); font-size:.95rem; flex:1}
+  .treat ul{list-style:none; font-size:.86rem; color:var(--ink-soft)}
+  .treat ul li{padding:.5rem 0; border-top:1px solid rgba(38,36,31,.1)}
+  .treat a{
+    font-size:.76rem; letter-spacing:.22em; text-transform:uppercase; text-decoration:none; font-weight:400;
+    border-bottom:1px solid var(--bronze); padding-bottom:.25rem; align-self:flex-start;
+    transition:color .25s;
+  }
+  .treat a:hover{color:var(--bronze)}
+  .treat-note{margin-top:1.6rem; text-align:center; font-size:.82rem; color:var(--ink-soft); font-style:italic; font-family:var(--serif); font-size:1.05rem}
+
+  /* Assurance — answers the client's stated customer objections */
+  .assurance{background:var(--ink); color:var(--porcelain)}
+  .assurance .flank{color:rgba(244,238,227,.65)}
+  .assurance .section-title{color:var(--porcelain)}
+  .assurance .section-intro{color:rgba(244,238,227,.7)}
+  .assure-grid{margin-top:3.5rem; display:grid; grid-template-columns:repeat(2,1fr); gap:2.6rem 4rem}
+  .assure h3{
+    font-family:var(--serif); font-weight:500; font-size:1.45rem; letter-spacing:.02em;
+    padding-bottom:.8rem; margin-bottom:.9rem; border-bottom:1px solid rgba(154,126,79,.5);
+  }
+  .assure p{color:rgba(244,238,227,.75); font-size:.96rem}
+
+  /* Journey — a genuine sequence, so numbering is earned */
+  .journey .steps{margin-top:3.5rem; display:grid; grid-template-columns:repeat(3,1fr); gap:3rem}
+  .step .num{
+    font-family:var(--serif); font-style:italic; font-size:2.4rem; color:var(--bronze); line-height:1;
+  }
+  .step h3{font-family:var(--serif); font-weight:500; font-size:1.4rem; margin:.8rem 0 .6rem}
+  .step p{color:var(--ink-soft); font-size:.95rem}
+
+  /* About */
+  .about{background:var(--bone); border-top:1px solid rgba(38,36,31,.12); border-bottom:1px solid rgba(38,36,31,.12)}
+  .about .inner{display:grid; grid-template-columns:1.1fr .9fr; gap:4rem; align-items:center}
+  .about h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2}
+  .about p{margin-top:1.2rem; color:var(--ink-soft)}
+  .about .sig{margin-top:1.8rem; font-family:var(--serif); font-style:italic; font-size:1.2rem}
+  .about .portrait{
+    aspect-ratio:4/5; background:linear-gradient(160deg,#E9E1D1,#DDD2BC);
+    display:flex; align-items:center; justify-content:center;
+    border:1px solid rgba(38,36,31,.18);
+    font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; color:var(--ink-soft); text-align:center; padding:1rem;
+  }
+
+  /* FAQ */
+  .faq .list{max-width:760px; margin:3rem auto 0; border-top:1px solid rgba(38,36,31,.18)}
+  details{border-bottom:1px solid rgba(38,36,31,.18)}
+  summary{
+    cursor:pointer; list-style:none; padding:1.4rem .2rem;
+    font-family:var(--serif); font-size:1.25rem; font-weight:500; letter-spacing:.01em;
+    display:flex; justify-content:space-between; align-items:center; gap:1rem;
+  }
+  summary::-webkit-details-marker{display:none}
+  summary::after{content:"+"; font-family:var(--sans); font-weight:300; font-size:1.4rem; color:var(--bronze); transition:transform .25s}
+  details[open] summary::after{transform:rotate(45deg)}
+  details p{padding:0 .2rem 1.5rem; color:var(--ink-soft); max-width:62ch}
+
+  /* Contact */
+  .contact{background:var(--porcelain)}
+  .contact .inner{display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:start}
+  .contact h2{font-family:var(--serif); font-weight:400; font-size:clamp(1.9rem,3.5vw,2.6rem); line-height:1.2}
+  .contact .ways{margin-top:2rem; display:flex; flex-direction:column; gap:1.1rem}
+  .way{
+    border:1px solid rgba(38,36,31,.25); padding:1.3rem 1.5rem; text-decoration:none;
+    display:flex; justify-content:space-between; align-items:baseline; gap:1rem;
+    transition:background .25s,color .25s; background:var(--bone);
+  }
+  .way:hover,.way:focus-visible{background:var(--ink); color:var(--porcelain)}
+  .way .label{font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; font-weight:400}
+  .way .value{font-family:var(--serif); font-size:1.2rem; font-weight:500}
+  .hours{margin-top:2rem; font-size:.9rem; color:var(--ink-soft)}
+  .hours dt{font-size:.7rem; letter-spacing:.3em; text-transform:uppercase; margin-bottom:.5rem; color:var(--ink)}
+  form{display:flex; flex-direction:column; gap:1.1rem}
+  .field label{display:block; font-size:.7rem; letter-spacing:.28em; text-transform:uppercase; margin-bottom:.45rem; font-weight:400}
+  .field input,.field select,.field textarea{
+    width:100%; background:var(--bone); border:1px solid rgba(38,36,31,.3);
+    padding:.85rem 1rem; font-family:var(--sans); font-weight:300; font-size:.95rem; color:var(--ink);
+  }
+  .field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--bronze); outline-offset:1px}
+  form .btn{align-self:flex-start; cursor:pointer; background:var(--ink); color:var(--porcelain); border:1px solid var(--ink)}
+  form .btn:hover{background:transparent; color:var(--ink)}
+  .form-note{font-size:.8rem; color:var(--ink-soft)}
+  .form-success{display:none; font-family:var(--serif); font-size:1.2rem; padding:1.2rem 0; border-top:1px solid var(--bronze)}
+
+  /* Footer */
+  footer{background:var(--ink); color:rgba(244,238,227,.7); padding:3.5rem 1.4rem 2.5rem}
+  footer .inner{max-width:var(--max); margin:0 auto; text-align:center}
+  footer .wordmark .name{font-size:1.3rem; color:var(--porcelain)}
+  footer .wordmark .sub{font-size:.45rem; color:rgba(244,238,227,.8)}
+  footer .wordmark .sub::before,footer .wordmark .sub::after{background:rgba(244,238,227,.5)}
+  .foot-links{margin-top:1.8rem; display:flex; gap:2rem; justify-content:center; list-style:none; font-size:.74rem; letter-spacing:.2em; text-transform:uppercase; flex-wrap:wrap}
+  .foot-links a{text-decoration:none}
+  .foot-links a:hover{color:var(--porcelain)}
+  .legal{margin-top:2rem; font-size:.72rem; letter-spacing:.06em; line-height:1.9; color:rgba(244,238,227,.45)}
+
+  /* Reveal on scroll */
+  .reveal{opacity:0; transform:translateY(18px); transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1; transform:none}
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto}
+    .reveal{opacity:1; transform:none; transition:none}
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:900px){
+    .credentials ul{grid-template-columns:repeat(2,1fr)}
+    .credentials li:nth-child(3){border-left:none}
+    .credentials li:nth-child(n+3){border-top:1px solid rgba(38,36,31,.12)}
+    .treat-grid{grid-template-columns:1fr}
+    .treat + .treat{border-left:none; border-top:1px solid rgba(38,36,31,.18)}
+    .assure-grid{grid-template-columns:1fr; gap:2.2rem}
+    .journey .steps{grid-template-columns:1fr; gap:2.4rem}
+    .about .inner{grid-template-columns:1fr; gap:2.5rem}
+    .contact .inner{grid-template-columns:1fr; gap:3rem}
+    .nav-links{display:none}
+    .menu-btn{display:block}
+    .nav-links.open{
+      display:flex; position:absolute; top:100%; left:0; right:0;
+      flex-direction:column; gap:0; background:var(--porcelain);
+      border-bottom:1px solid rgba(38,36,31,.15);
+    }
+    .nav-links.open li{border-top:1px solid rgba(38,36,31,.1)}
+    .nav-links.open a{display:block; padding:1.1rem 1.4rem}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="nav" aria-label="Main">
+    <a class="wordmark" href="#top" aria-label="Carlton Aesthetics — home">
+      <span class="name">Carlton</span>
+      <span class="sub">Aesthetics</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#standards">Our Standards</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Book a consultation</a>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu</button>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="flank reveal">Pharmacist-led facial aesthetics</p>
+    <h1 class="reveal">Medical precision.<br><em>Quietly beautiful</em> results.</h1>
+    <p class="lead reveal">Anti-wrinkle treatments and dermal fillers, delivered by a registered
+    healthcare professional within the trusted setting of an established community pharmacy.
+    Every treatment begins with an honest, unhurried consultation.</p>
+    <div class="hero-ctas reveal">
+      <a class="btn solid" href="#contact">Book a consultation</a>
+      <a class="btn ghost" href="https://wa.me/440000000000" rel="noopener">WhatsApp us</a>
+    </div>
+    <p class="hero-note reveal">Consultation first, always <span>—</span> no obligation, no pressure</p>
+  </section>
+
+  <!-- CREDENTIAL STRIP -->
+  <div class="credentials reveal" role="region" aria-label="Our credentials">
+    <ul>
+      <li><strong>GPhC Registered</strong>Qualified pharmacist prescriber</li>
+      <li><strong>Fully Insured</strong>Comprehensive medical indemnity</li>
+      <li><strong>Clinical Setting</strong>Within an established pharmacy</li>
+      <li><strong>Premium Products</strong>Leading, licensed injectables only</li>
+    </ul>
+  </div>
+
+  <!-- TREATMENTS -->
+  <section class="treatments" id="treatments">
+    <div class="inner">
+      <p class="flank reveal">Treatments</p>
+      <h2 class="section-title reveal">Considered enhancement, never transformation</h2>
+      <p class="section-intro reveal">Whether you're refining your features or softening the first signs of
+      ageing, every plan is designed around your face — and only ever what it needs.</p>
+
+      <div class="treat-grid">
+        <article class="treat reveal">
+          <p class="kicker">Smooth &amp; Prevent</p>
+          <h3>Anti-Wrinkle Treatments</h3>
+          <p>Precise, prescription-only treatment to soften expression lines while keeping
+          your face naturally mobile. Prescribed and administered following a full medical consultation.</p>
+          <ul>
+            <li>Forehead lines</li>
+            <li>Frown lines</li>
+            <li>Crow's feet</li>
+          </ul>
+          <a href="#contact">Enquire about anti-wrinkle</a>
+        </article>
+
+        <article class="treat reveal">
+          <p class="kicker">Define &amp; Enhance</p>
+          <h3>Dermal Fillers</h3>
+          <p>Subtle volume and definition using premium hyaluronic acid fillers —
+          balanced lips, sculpted cheeks, a refined jawline. Designed to look like you, on your best day.</p>
+          <ul>
+            <li>Lip enhancement</li>
+            <li>Cheek definition</li>
+            <li>Jawline contouring</li>
+          </ul>
+          <a href="#contact">Enquire about fillers</a>
+        </article>
+
+        <article class="treat reveal">
+          <p class="kicker">Discreet &amp; Natural</p>
+          <h3>Aesthetics for Men</h3>
+          <p>Understated treatments tailored to masculine features — refreshing tired eyes,
+          strengthening the jaw, softening lines without ever looking "done".</p>
+          <ul>
+            <li>Anti-wrinkle for men</li>
+            <li>Jawline &amp; chin definition</li>
+            <li>Subtle rejuvenation</li>
+          </ul>
+          <a href="#contact">Enquire in confidence</a>
+        </article>
+      </div>
+      <p class="treat-note reveal">All prices confirmed at consultation, once we've agreed the right plan for you.</p>
+    </div>
+  </section>
+
+  <!-- STANDARDS / ASSURANCE -->
+  <section class="assurance" id="standards">
+    <div class="inner">
+      <p class="flank reveal">Our Standards</p>
+      <h2 class="section-title reveal">The questions you should ask any clinic — answered</h2>
+      <p class="section-intro reveal">Choosing an injector is a medical decision. Here is exactly
+      where we stand on the things that matter.</p>
+
+      <div class="assure-grid">
+        <div class="assure reveal">
+          <h3>Who will treat me?</h3>
+          <p>Every treatment is carried out personally by a pharmacist registered with the
+          General Pharmaceutical Council (GPhC), with accredited training in facial aesthetics —
+          never a delegate, never a technician.</p>
+        </div>
+        <div class="assure reveal">
+          <h3>Are you insured?</h3>
+          <p>Yes — we hold comprehensive medical indemnity insurance covering every treatment
+          we offer. Documentation is available to view at your consultation.</p>
+        </div>
+        <div class="assure reveal">
+          <h3>Is the clinic hygienic?</h3>
+          <p>Treatments take place in a dedicated clinical room within our pharmacy, following
+          strict medical-grade hygiene and single-use protocols — the same standards we've upheld
+          as a healthcare provider for years.</p>
+        </div>
+        <div class="assure reveal">
+          <h3>What products do you use?</h3>
+          <p>Only leading, licensed injectables sourced through regulated pharmaceutical
+          channels — the benefit of being based within a pharmacy. We will always tell you
+          exactly what is being used, and why.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- JOURNEY -->
+  <section class="journey">
+    <div class="inner">
+      <p class="flank reveal">Your Visit</p>
+      <h2 class="section-title reveal">From first hello to final review</h2>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">i.</div>
+          <h3>Consultation</h3>
+          <p>A relaxed, no-obligation conversation about your goals, your medical history, and
+          what's genuinely right for your face. If a treatment isn't suitable, we'll say so.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">ii.</div>
+          <h3>Treatment</h3>
+          <p>Carried out with clinical precision in our private treatment room. Most appointments
+          take under 45 minutes, with minimal downtime.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">iii.</div>
+          <h3>Review</h3>
+          <p>A complimentary follow-up to check your results and answer any questions —
+          because our duty of care doesn't end when you leave the chair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="inner">
+      <div>
+        <p class="flank reveal" style="justify-content:flex-start">About Carlton</p>
+        <h2 class="reveal">Aesthetics, grounded in pharmacy</h2>
+        <p class="reveal">Carlton Aesthetics was founded on a simple belief: aesthetic treatments
+        are medical treatments, and deserve the same rigour. Based within a long-standing community
+        pharmacy, we bring years of healthcare experience — patient safety, honest advice,
+        regulated products — to the world of facial aesthetics.</p>
+        <p class="reveal">You won't find pressure, packages you don't need, or trends that won't
+        suit you. Just careful clinical judgement, premium products, and results that look
+        effortlessly natural.</p>
+        <p class="sig reveal">— Your practitioner, GPhC-registered pharmacist</p>
+      </div>
+      <div class="portrait reveal">Practitioner portrait<br>photography to follow</div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="inner">
+      <p class="flank reveal">Common Questions</p>
+      <h2 class="section-title reveal">Before you book</h2>
+      <div class="list reveal">
+        <details>
+          <summary>Will my results look natural?</summary>
+          <p>That is the entire philosophy of the clinic. We treat conservatively, build gradually,
+          and would rather you return for a little more than ever leave over-treated. Nobody should
+          be able to tell you've had anything done — only that you look well.</p>
+        </details>
+        <details>
+          <summary>Does it hurt?</summary>
+          <p>Discomfort is minimal. We use ultra-fine needles and, for filler treatments, products
+          containing local anaesthetic. Most clients describe it as far easier than expected.</p>
+        </details>
+        <details>
+          <summary>How long do results last?</summary>
+          <p>Anti-wrinkle results typically last 3–4 months; dermal fillers from 6 to 18 months
+          depending on the area and product. We'll give you honest, personalised timelines at consultation.</p>
+        </details>
+        <details>
+          <summary>Why does treatment require a consultation first?</summary>
+          <p>Anti-wrinkle injections are prescription-only medicines, so a face-to-face medical
+          consultation is a legal and clinical requirement — and it's also how we make sure any
+          treatment is genuinely right for you. Consultations carry no obligation.</p>
+        </details>
+        <details>
+          <summary>What if something isn't right for me?</summary>
+          <p>Then we'll tell you, plainly. As healthcare professionals our first duty is to you,
+          not to a sale. Sometimes the best advice is skincare, patience, or nothing at all.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="inner">
+      <div>
+        <p class="flank reveal" style="justify-content:flex-start">Book a Consultation</p>
+        <h2 class="reveal">Begin with a conversation</h2>
+        <p class="reveal" style="margin-top:1.2rem; color:var(--ink-soft)">Message us on WhatsApp,
+        call during opening hours, or send the form — we'll come back to you within one working day.</p>
+
+        <div class="ways reveal">
+          <a class="way" href="https://wa.me/440000000000" rel="noopener">
+            <span class="label">WhatsApp</span>
+            <span class="value">Message the clinic</span>
+          </a>
+          <a class="way" href="tel:+440000000000">
+            <span class="label">Phone</span>
+            <span class="value">+44 (0)00 0000 0000</span>
+          </a>
+          <a class="way" href="https://instagram.com/" rel="noopener">
+            <span class="label">Instagram</span>
+            <span class="value">@carltonaesthetics</span>
+          </a>
+        </div>
+
+        <dl class="hours reveal">
+          <dt>Clinic hours</dt>
+          <dd>Monday – Friday, 9.00am – 5.30pm · Saturday by appointment<br>
+          Within [Pharmacy Name], [Street Address, Town, Postcode]</dd>
+        </dl>
+      </div>
+
+      <form id="enquiryForm" class="reveal" novalidate>
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="phone">Phone or WhatsApp number</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="field">
+          <label for="interest">I'm interested in</label>
+          <select id="interest" name="interest">
+            <option>A consultation — not sure yet</option>
+            <option>Anti-wrinkle treatments</option>
+            <option>Lip enhancement</option>
+            <option>Cheek definition</option>
+            <option>Jawline contouring</option>
+            <option>Aesthetics for men</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">Anything you'd like us to know (optional)</label>
+          <textarea id="message" name="message" rows="4"></textarea>
+        </div>
+        <button class="btn" type="submit">Request my consultation</button>
+        <p class="form-note">We'll only use your details to respond to this enquiry. No mailing lists, no spam.</p>
+        <p class="form-success" id="formSuccess">Thank you — your request has been received.
+        We'll be in touch within one working day.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="inner">
+    <a class="wordmark" href="#top" aria-label="Back to top">
+      <span class="name">Carlton</span>
+      <span class="sub">Aesthetics</span>
+    </a>
+    <ul class="foot-links">
+      <li><a href="#treatments">Treatments</a></li>
+      <li><a href="#standards">Our Standards</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <p class="legal">© 2026 Carlton Aesthetics. All treatments delivered by a GPhC-registered pharmacist.
+    Prescription-only medicines are prescribed following a face-to-face consultation.<br>
+    Privacy Policy · Terms · Complaints Procedure</p>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu
+  const btn = document.getElementById('menuBtn');
+  const links = document.getElementById('navLinks');
+  btn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // Scroll reveal (respects reduced motion via CSS)
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Enquiry form (front-end only — wire to email/WhatsApp API at build stage)
+  document.getElementById('enquiryForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const form = e.target;
+    if (!form.name.value.trim() || !form.phone.value.trim()) {
+      form.name.reportValidity(); form.phone.reportValidity(); return;
+    }
+    form.querySelectorAll('.field, .btn, .form-note').forEach(el => el.style.display = 'none');
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
